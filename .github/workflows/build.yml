@@ -38,7 +38,6 @@ jobs:
     - name: Restore dependencies
       run: |
         dotnet restore src/Shims.sln
-        nuget restore src/Shims.Net48.Tests/Shims.Net48.Tests.csproj
 
     - name: Build .NET Standard 2.0 library
       run: dotnet build --configuration Release src/Shims/Shims.csproj
