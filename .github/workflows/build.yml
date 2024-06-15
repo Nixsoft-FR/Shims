@@ -15,19 +15,19 @@ jobs:
 
     strategy:
       matrix:
-        dotnet-version: ['6.x']
+        dotnet-version: ['8.x']
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
 
     - name: Restore dependencies
-      run: dotnet restore Shims.sln
+      run: dotnet restore src/Shims.sln
 
     - name: Build .NET Standard 2.0 library
       run: dotnet build --configuration Release src/Shims/Shims.csproj
