@@ -36,7 +36,9 @@ jobs:
         nuget-version: ${{ matrix.nuget-version }}
 
     - name: Restore dependencies
-      run: dotnet restore src/Shims.sln
+      run: |
+        dotnet restore src/Shims.sln
+        nuget restore src/Shims.Net48.Tests/Shims.Net48.Tests.csproj
 
     - name: Build .NET Standard 2.0 library
       run: dotnet build --configuration Release src/Shims/Shims.csproj
@@ -45,13 +47,10 @@ jobs:
       run: dotnet build --configuration Release src/Shims.NET8.Tests/Shims.NET8.Tests.csproj
 
     - name: Build .NET Framework 4.8 MSTest project
-      run: |
-        nuget restore src/Shims.Net48.Tests/Shims.Net48.Tests.csproj
-        msbuild /p:Configuration=Release src/Shims.Net48.Tests/Shims.Net48.Tests.csproj
+      run: msbuild /p:Configuration=Release src/Shims.Net48.Tests/Shims.Net48.Tests.csproj
 
     - name: Test .NET 8 MSTest project
       run: dotnet test --configuration Release --no-build src/Shims.NET8.Tests/Shims.NET8.Tests.csproj
 
     - name: Test .NET Framework 4.8 MSTest project
-      run: |
-        vstest.console.exe src/Shims.Net48.Tests/bin/Release/Shims.Net48.Tests.dll
+      run: vstest.console.exe src/Shims.Net48.Tests/bin/Release/Shims.Net48.Tests.dll
