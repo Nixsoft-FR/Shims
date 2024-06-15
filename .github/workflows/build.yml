@@ -16,6 +16,7 @@ jobs:
     strategy:
       matrix:
         dotnet-version: ['8.x']
+        nuget-version: ['latest']
 
     steps:
     - name: Checkout repository
@@ -25,6 +26,11 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
+        
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+      with:
+        nuget-version: ${{ matrix.nuget-version }}
 
     - name: Restore dependencies
       run: dotnet restore src/Shims.sln
@@ -33,16 +39,16 @@ jobs:
       run: dotnet build --configuration Release src/Shims/Shims.csproj
 
     - name: Build .NET 8 MSTest project
-      run: dotnet build --configuration Release src/Shims.Tests/Shims.Tests.csproj
+      run: dotnet build --configuration Release src/Shims.NET8.Tests/Shims.NET8.Tests.csproj
 
     - name: Build .NET Framework 4.8 MSTest project
-      run: msbuild /p:Configuration=Release src/Shims.Net48.Tests/Shims.Net48.Tests.csproj
-
-    - name: Test .NET 8 MSTest project
-      run: dotnet test --configuration Release --no-build src/Shims.Tests/Shims.Tests.csproj
-
-    - name: Test .NET Framework 4.8 MSTest project
       run: |
         nuget restore src/Shims.Net48.Tests/Shims.Net48.Tests.csproj
         msbuild /p:Configuration=Release src/Shims.Net48.Tests/Shims.Net48.Tests.csproj
+
+    - name: Test .NET 8 MSTest project
+      run: dotnet test --configuration Release --no-build src/Shims.NET8.Tests/Shims.NET8.Tests.csproj
+
+    - name: Test .NET Framework 4.8 MSTest project
+      run: |
         vstest.console.exe src/Shims.Net48.Tests/bin/Release/Shims.Net48.Tests.dll
