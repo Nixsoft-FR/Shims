@@ -5,24 +5,44 @@ name: .NET
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "feature/*" ]
   pull_request:
     branches: [ "master" ]
 
 jobs:
   build:
+    runs-on: windows-latest
 
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: ['6.x']
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: ${{ matrix.dotnet-version }}
+
     - name: Restore dependencies
-      run: dotnet restore src/
-    - name: Build
-      run: dotnet build --no-restore src/
-    - name: Test
-      run: dotnet test --no-build --verbosity normal src/
+      run: dotnet restore Shims.sln
+
+    - name: Build .NET Standard 2.0 library
+      run: dotnet build --configuration Release src/Shims/Shims.csproj
+
+    - name: Build .NET 8 MSTest project
+      run: dotnet build --configuration Release tests/Shims.Tests/Shims.Tests.csproj
+
+    - name: Build .NET Framework 4.8 MSTest project
+      run: msbuild /p:Configuration=Release tests/Shims.Net48.Tests/Shims.Net48.Tests.csproj
+
+    - name: Test .NET 8 MSTest project
+      run: dotnet test --configuration Release --no-build tests/Shims.Tests/Shims.Tests.csproj
+
+    - name: Test .NET Framework 4.8 MSTest project
+      run: |
+        nuget restore tests/Shims.Net48.Tests/Shims.Net48.Tests.csproj
+        msbuild /p:Configuration=Release tests/Shims.Net48.Tests/Shims.Net48.Tests.csproj
+        vstest.console.exe tests/Shims.Net48.Tests/bin/Release/Shims.Net48.Tests.dll
