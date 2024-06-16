@@ -1,3 +1,4 @@
+using Shims.Core;
 using System;
 
 namespace Shims
