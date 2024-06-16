@@ -32,6 +32,12 @@ jobs:
       with:
         nuget-version: ${{ matrix.nuget-version }}
 
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: 17
+        distribution: 'zulu'
+
     - name : Install Sonnar Scanner
       run : dotnet tool install --global dotnet-sonarscanner
 
