@@ -53,4 +53,6 @@ jobs:
         dotnet test --configuration Release --no-build src/Shims.NET8.Tests/Shims.NET8.Tests.csproj
 
     - name : End Scan
-      run : dotnet sonarscanner end
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run : dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
