@@ -1,0 +1,57 @@
+name: Release on Nuget
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        dotnet-version: ['8.x']
+        nuget-version: ['latest']
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}
+        
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+      with:
+        nuget-version: ${{ matrix.nuget-version }}
+
+    - name: Extract version from tag
+      id: extract_version
+      run: |
+        $refName = "${{ github.ref_name }}"
+        $version = $refName -replace '^v', ''
+        echo "version=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8         
+
+    - name: Restore dependencies
+      run: dotnet restore src/Shims.sln
+
+    - name: Build
+      run: dotnet build --configuration Release src/Shims.sln
+
+    - name: Pack the library
+      run: |
+        dotnet pack src/Shims/Shims.csproj --configuration Release /p:Version=$env:version --no-build --output ./artifacts
+
+    - name: Push NuGet package
+      shell: powershell
+      env:
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      run: |
+        if (-not $env:NUGET_API_KEY) { 
+          Write-Error "NUGET_API_KEY is not set" 
+          exit 1 
+        }
+        dotnet nuget push ./artifacts/Shims.$($env:version).nupkg --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate

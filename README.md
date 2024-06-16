@@ -10,10 +10,23 @@ Shims is a .NET project that allows the creation of unit tests for class methods
 
 ## Installation
 
+### Via NuGet Package
+
+1. Open your project in your preferred .NET IDE.
+2. In the Package Manager Console, run the following command:
+
+    ```shell
+    Install-Package Shims
+    ```
+
+### Cloning the Repository
+
 1. Clone the repository:
-    ```bash
+
+    ```shell
     git clone https://github.com/Nixsoft-FR/Shims.git
     ```
+
 2. Open the project in your preferred .NET IDE.
 
 ## Usage
