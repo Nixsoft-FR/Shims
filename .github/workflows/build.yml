@@ -32,8 +32,17 @@ jobs:
       with:
         nuget-version: ${{ matrix.nuget-version }}
 
+    - name : Install Sonnar Scanner
+      run : dotnet tool install --global dotnet-sonarscanner
+
     - name: Restore dependencies
       run: dotnet restore src/Shims.sln
+
+    - name : Start Sonar Scanner
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run : dotnet sonarscanner begin begin /k:"Nixsoft-FR_Shims" /o:"nixsoft-fr" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
 
     - name: Build .NET Standard 2.0 library
       run: dotnet build --configuration Release src/Shims/Shims.csproj
@@ -42,3 +51,6 @@ jobs:
       run: |
         dotnet build --configuration Release src/Shims.NET8.Tests/Shims.NET8.Tests.csproj
         dotnet test --configuration Release --no-build src/Shims.NET8.Tests/Shims.NET8.Tests.csproj
+
+    - name : End Scan
+      run : dotnet sonarscanner end
