@@ -1,29 +1,33 @@
 using System;
 
-internal static class ShimContextManager
+namespace Shims.Core
 {
-    private static ShimContext currentContext;
-
-    public static ShimContext CurrentContext
+    internal static class ShimContextManager
     {
-        get
+        private static ShimContext currentContext;
+
+        public static ShimContext CurrentContext
         {
-            if (currentContext == null)
+            get
             {
-                throw new InvalidOperationException("ShimContext n'a pas été initialisé.");
+                if (currentContext == null)
+                {
+                    throw new InvalidOperationException("ShimContext n'a pas été initialisé.");
+                }
+                return currentContext;
             }
-            return currentContext;
+        }
+
+        public static void Initialize(string id)
+        {
+            currentContext = new ShimContext(id);
+        }
+
+        public static void Cleanup()
+        {
+            currentContext?.Dispose();
+            currentContext = null;
         }
     }
 
-    public static void Initialize(string id)
-    {
-        currentContext = new ShimContext(id);
-    }
-
-    public static void Cleanup()
-    {
-        currentContext?.Dispose();
-        currentContext = null;
-    }
 }

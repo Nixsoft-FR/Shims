@@ -11,18 +11,52 @@ on:
 
 jobs:
   build:
+    runs-on: windows-latest
 
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: ['8.x']
+        nuget-version: ['latest']
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup .NET SDK
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: ${{ matrix.dotnet-version }}
+        
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+      with:
+        nuget-version: ${{ matrix.nuget-version }}
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: 17
+        distribution: 'zulu'
+
+    - name : Install Sonnar Scanner
+      run : dotnet tool install --global dotnet-sonarscanner
+
     - name: Restore dependencies
-      run: dotnet restore src/
-    - name: Build
-      run: dotnet build --no-restore src/
-    - name: Test
-      run: dotnet test --no-build --verbosity normal src/
+      run: dotnet restore src/Shims.sln
+
+    - name : Start Sonar Scanner
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run : dotnet sonarscanner begin /k:"Nixsoft-FR_Shims" /o:"nixsoft-fr" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="./coverage/coverage.opencover.xml"
+
+    - name: Build Solution
+      run: dotnet build --configuration Release src/Shims.sln
+
+    - name: Run Tests
+      run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutput=./coverage/ /p:CoverletOutputFormat=opencover /p:MergeWith="./coverage/coverage.opencover.xml" src/Shims.sln
+
+    - name : End Scan
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run : dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
