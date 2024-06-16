@@ -48,13 +48,7 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run : |
-        dotnet sonarscanner begin \
-          /k:"Nixsoft-FR_Shims" \
-          /o:"nixsoft-fr"  \
-          /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
-          /d:sonar.host.url="https://sonarcloud.io" \
-          /d:sonar.cs.opencover.reportsPaths="./coverage/coverage.opencover.xml"
+      run : dotnet sonarscanner begin /k:"Nixsoft-FR_Shims" /o:"nixsoft-fr" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="./coverage/coverage.opencover.xml"
 
     - name: Build .NET Standard 2.0 library
       run: dotnet build --configuration Release src/Shims/Shims.csproj
