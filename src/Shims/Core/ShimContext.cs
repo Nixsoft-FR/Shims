@@ -5,21 +5,38 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-public class ShimContext : IDisposable
+namespace Shims.Core
 {
-    private readonly Harmony harmonyInstance;
-
-    internal Dictionary<MethodBase, ISetup> Instances { get; private set; } = new Dictionary<MethodBase, ISetup>();
-
-    public ShimContext(string instanceId)
+    public class ShimContext : IDisposable
     {
-        harmonyInstance = new Harmony(instanceId);
-    }
+        private readonly Harmony harmonyInstance;
 
-    public Harmony HarmonyInstance => harmonyInstance;
+        internal Dictionary<MethodBase, ISetup> Instances { get; private set; } = new Dictionary<MethodBase, ISetup>();
 
-    public void Dispose()
-    {
-        harmonyInstance.UnpatchAll(harmonyInstance.Id);
+        public ShimContext(string instanceId)
+        {
+            harmonyInstance = new Harmony(instanceId);
+        }
+
+        public Harmony HarmonyInstance => harmonyInstance;
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                harmonyInstance.UnpatchAll(harmonyInstance.Id);
+            }
+        }
+
+        ~ShimContext() 
+        {
+            Dispose(false);
+        }
     }
 }
