@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{65AF239B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shims.TestContext", "Shims.TestContext\Shims.TestContext.csproj", "{C8A34C81-DDDC-49D4-8E5F-9718D0167698}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shims.NET48.Tests", "Shims.NET48.Tests\Shims.NET48.Tests.csproj", "{9B8FE67E-6F86-4887-B795-7B5A21A55440}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,10 +29,6 @@ Global
 		{C8A34C81-DDDC-49D4-8E5F-9718D0167698}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8A34C81-DDDC-49D4-8E5F-9718D0167698}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8A34C81-DDDC-49D4-8E5F-9718D0167698}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B8FE67E-6F86-4887-B795-7B5A21A55440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B8FE67E-6F86-4887-B795-7B5A21A55440}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B8FE67E-6F86-4887-B795-7B5A21A55440}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B8FE67E-6F86-4887-B795-7B5A21A55440}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,7 +36,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{FC5D7C3F-299C-44CE-A4B4-F4A7CF50F75B} = {65AF239B-E5E2-4C4B-9879-46DE88AF9519}
 		{C8A34C81-DDDC-49D4-8E5F-9718D0167698} = {65AF239B-E5E2-4C4B-9879-46DE88AF9519}
-		{9B8FE67E-6F86-4887-B795-7B5A21A55440} = {65AF239B-E5E2-4C4B-9879-46DE88AF9519}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {149953F7-0DE1-41C4-91B0-AC0F4AD7061E}
