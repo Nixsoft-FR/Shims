@@ -54,7 +54,7 @@ jobs:
       run: dotnet build --configuration Release src/Shims.sln
 
     - name: Run Tests
-      run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutput=./coverage/ /p:CoverletOutputFormat=opencover /p:MergeWith="./coverage/coverage.opencover.xml" src/Shims.sln
+      run: dotnet test --configuration Release --no-build src/Shims.sln
 
     - name : End Scan
       env:

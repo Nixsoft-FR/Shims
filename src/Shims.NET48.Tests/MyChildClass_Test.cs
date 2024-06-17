@@ -2,7 +2,7 @@
 using Shims.TestContext;
 using System;
 
-namespace Shims.NET8.Tests
+namespace Shims.NET48.Tests
 {
 
     [TestClass]

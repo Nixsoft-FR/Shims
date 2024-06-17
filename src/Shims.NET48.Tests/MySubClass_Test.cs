@@ -4,7 +4,7 @@ using Shims.TestContext.Shims.TestContext;
 using System;
 using System.Runtime.CompilerServices;
 
-namespace Shims.NET8.Tests
+namespace Shims.NET48.Tests
 {
 
     [TestClass]
