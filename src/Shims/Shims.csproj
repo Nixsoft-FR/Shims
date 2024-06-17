@@ -1,11 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+	  <TargetFrameworks>netstandard2.0;net8.0;net7.0;net6.0;net48;net481</TargetFrameworks>
+	  <PackageId>Shims</PackageId>
+	  <Authors>Nixsoft</Authors>
+	  <Company>Nixsoft</Company>
+	  <Description>Shims library to facilitate unit testing of highly coupled .NET projects.</Description>
+	  <PackageTags>shims;testing;unit-testing;mocking</PackageTags>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <RepositoryUrl>https://github.com/Nixsoft-FR/Shims</RepositoryUrl>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Lib.Harmony" Version="2.3.3" />
+	<None Include="..\..\README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>

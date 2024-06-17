@@ -45,10 +45,11 @@ jobs:
       run: dotnet restore src/Shims.sln
 
     - name : Start Sonar Scanner
+      shell: powershell
       env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run : dotnet sonarscanner begin /k:"Nixsoft-FR_Shims" /o:"nixsoft-fr" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="./coverage/coverage.opencover.xml"
+      run : dotnet sonarscanner begin /k:"Nixsoft-FR_Shims" /o:"nixsoft-fr" /d:sonar.token="$env:SONAR_TOKEN" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="./coverage/coverage.opencover.xml"
 
     - name: Build Solution
       run: dotnet build --configuration Release src/Shims.sln
@@ -57,6 +58,7 @@ jobs:
       run: dotnet test --configuration Release --no-build src/Shims.sln
 
     - name : End Scan
+      shell: powershell
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run : dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+      run : dotnet sonarscanner end /d:sonar.token="$env:SONAR_TOKEN"
