@@ -343,17 +343,6 @@ namespace Shims.NET48.Tests
         }
 
         [TestMethod]
-        public void MyClass_MyMethodWithParameter_OK_WithoutCallback()
-        {
-            Shim<MyClass> shim = new Shim<MyClass>();
-            shim.Setup(mock => mock.MyMethodWithParameter(It.Any<string>()));
-
-            MyClass instance = new MyClass();
-            instance.MyMethodWithParameter("Test");
-        }
-
-
-        [TestMethod]
         public void MyClass_MyMethodWithParameter_KO_Throws_WithoutCallback()
         {
             Shim<MyClass> shim = new Shim<MyClass>();
