@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Shims.TestContext;
-using Shims.TestContext.Shims.TestContext;
+using Shims.NET48.TestContext;
+using Shims.NET48.TestContext.Shims.TestContext;
 using System;
 using System.Runtime.CompilerServices;
 

@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Shims.TestContext;
+using Shims.NET48.TestContext;
 using System;
 
 namespace Shims.NET48.Tests

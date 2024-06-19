@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shims.TestContext
+namespace Shims.NET48.TestContext
 {
     public class MyClass
     {
@@ -111,10 +111,11 @@ namespace Shims.TestContext
             };
         }
 
-        public T MyMethodWithGenericReturn<T>() where T : class, new()
+        public T MyMethodWithParametersAndGenericReturn<T>(string s, bool b) where T : class, new()
         {
             return new T();
         }
+
     }
 
 }

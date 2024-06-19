@@ -8,27 +8,26 @@
     <Reference Include="System.Runtime" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Shims.TestContext\Shims.TestContext.csproj" />
+    <ProjectReference Include="..\Shims.NET48.TestContext\Shims.NET48.TestContext.csproj" />
     <ProjectReference Include="..\Shims\Shims.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Lib.Harmony" Version="2.3.3" />
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.22.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.*" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
     <PackageReference Include="Microsoft.Testing.Extensions.Telemetry" Version="1.2.1" />
     <PackageReference Include="Microsoft.Testing.Extensions.TrxReport.Abstractions" Version="1.2.1" />
     <PackageReference Include="Microsoft.Testing.Extensions.VSTestBridge" Version="1.2.1" />
     <PackageReference Include="Microsoft.Testing.Platform" Version="1.2.1" />
     <PackageReference Include="Microsoft.Testing.Platform.MSBuild" Version="1.2.1" />
-    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="17.5.0" />
+    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="17.10.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.4.3" />
     <PackageReference Include="MSTest.TestFramework" Version="3.4.3" />
     <PackageReference Include="NuGet.Frameworks" Version="5.11.3" />
     <PackageReference Include="System.Buffers" Version="4.5.1" />
     <PackageReference Include="System.Collections.Immutable" Version="1.5.0" />
     <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="5.0.0" />
-    <PackageReference Include="System.Memory" Version="4.5.4" />
+    <PackageReference Include="System.Memory" Version="4.5.5" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
     <PackageReference Include="System.Reflection.Metadata" Version="1.6.0" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.0.0" />

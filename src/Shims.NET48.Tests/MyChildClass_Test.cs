@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Shims.TestContext;
+using Shims.NET48.TestContext;
 using System;
 
 namespace Shims.NET48.Tests
@@ -1694,5 +1694,65 @@ namespace Shims.NET48.Tests
         }
 
         #endregion
+
+        [TestMethod]
+        public void MyChildMethodWithReturnMyOtherClassFromParent()
+        {
+            Shim<MyOtherClass> shimOtherClass = new Shim<MyOtherClass>();
+            shimOtherClass.SetupGet(x => x.MyFirstProperty).Returns("MyFirstProperty-shim");
+            shimOtherClass.SetupGet(x => x.MySecondProperty).Returns("MySecondProperty-shim");
+            shimOtherClass.SetupGet(x => x.MyThirdProperty).Returns("MyThirdProperty-shim");
+            shimOtherClass.SetupGet(x => x.MyFourthProperty).Returns("MyFourthProperty-shim");
+            shimOtherClass.SetupGet(x => x.MyFifthProperty).Returns("MyFifthProperty-shim");
+
+
+            MyOtherClass returnValue = new MyOtherClass();
+
+            Shim<MyClass> shim = new Shim<MyClass>();
+            shim.Setup(mock => mock.MyMethodReturninMyOtherClass()).Returns(returnValue);
+
+            MyChildClass instance = new MyChildClass();
+            MyOtherClass result = instance.MyMethodReturninMyOtherClass();
+
+            Assert.AreEqual("MyFirstProperty-shim", result.MyFirstProperty);
+            Assert.AreEqual("MySecondProperty-shim", result.MySecondProperty);
+            Assert.AreEqual("MyThirdProperty-shim", result.MyThirdProperty);
+            Assert.AreEqual("MyFourthProperty-shim", result.MyFourthProperty);
+            Assert.AreEqual("MyFifthProperty-shim", result.MyFifthProperty);
+
+        }
+
+        [TestMethod]
+        public void MyMethodWithGenericReturn()
+        {
+            //Shim<MyOtherClass> shimOtherClass = new Shim<MyOtherClass>();
+            //shimOtherClass.SetupGet(x => x.MyFirstProperty).Returns("MyFirstProperty-shim");
+            //shimOtherClass.SetupGet(x => x.MySecondProperty).Returns("MySecondProperty-shim");
+            //shimOtherClass.SetupGet(x => x.MyThirdProperty).Returns("MyThirdProperty-shim");
+            //shimOtherClass.SetupGet(x => x.MyFourthProperty).Returns("MyFourthProperty-shim");
+            //shimOtherClass.SetupGet(x => x.MyFifthProperty).Returns("MyFifthProperty-shim");
+
+
+            MyOtherClass returnValue = new MyOtherClass()
+            {
+                MyFirstProperty = "MyFirstProperty-shim",
+                MySecondProperty = "MySecondProperty-shim",
+                MyThirdProperty = "MyThirdProperty-shim",
+                MyFourthProperty = "MyFourthProperty-shim",
+                MyFifthProperty = "MyFifthProperty-shim"
+            };
+
+            Shim<MyClass> shim = new Shim<MyClass>();
+            shim.Setup(mock => mock.MyMethodWithParametersAndGenericReturn<MyOtherClass>(It.Any<string>(), It.Any<bool>())).Returns(returnValue);
+
+            MyChildClass instance = new MyChildClass();
+            MyOtherClass result = instance.MyMethodReturninMyOtherClass();
+
+            Assert.AreEqual("MyFirstProperty-shim", result.MyFirstProperty);
+            Assert.AreEqual("MySecondProperty-shim", result.MySecondProperty);
+            Assert.AreEqual("MyThirdProperty-shim", result.MyThirdProperty);
+            Assert.AreEqual("MyFourthProperty-shim", result.MyFourthProperty);
+            Assert.AreEqual("MyFifthProperty-shim", result.MyFifthProperty);
+        }
     }
 }

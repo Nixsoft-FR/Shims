@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Shims.TestContext
+namespace Shims.NET48.TestContext
 {
     public class MyChildClass : MyClass
     {
@@ -67,7 +65,7 @@ namespace Shims.TestContext
         }
         public void MyChildMethod()
         {
-           MyMethod();
+            MyMethod();
         }
 
         public string MyChildMethodWithReturn()
@@ -137,12 +135,12 @@ namespace Shims.TestContext
 
         public MyOtherClass MyChildMethodWithReturnMyOtherClassFromParent()
         {
-           return MyMethodReturninMyOtherClass();
+            return MyMethodReturninMyOtherClass();
         }
 
         public MyOtherClass MyChildMethodWithReturnMyOtherClassFromGeneric()
         {
-            return MyMethodWithGenericReturn<MyOtherClass>();
+            return MyMethodWithParametersAndGenericReturn<MyOtherClass>("test", false);
         }
 
     }
