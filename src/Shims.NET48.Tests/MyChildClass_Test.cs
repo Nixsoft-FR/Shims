@@ -88,6 +88,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyChildMethodWithReturn();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -107,6 +108,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyChildMethodWithReturn();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -132,6 +134,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyChildMethodWithReturn();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -152,6 +155,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyChildMethodWithReturn();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -176,6 +180,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyChildMethodWithReturn();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -196,6 +201,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyChildMethodWithReturn();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -573,6 +579,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyChildMethodWithParameter("Test");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {

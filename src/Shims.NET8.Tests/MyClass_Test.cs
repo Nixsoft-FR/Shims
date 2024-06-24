@@ -87,6 +87,7 @@ public class MyClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithReturn();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -106,6 +107,7 @@ public class MyClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithReturn();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -128,7 +130,11 @@ public class MyClass_Test : UnitTestBase
             });
 
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithReturn(); }
+        try
+        {
+            instance.MyMethodWithReturn();
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -142,7 +148,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(x => x.MyMethodWithReturn())
             .Throws(exceptionFunction);
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithReturn(); }
+        try
+        {
+            instance.MyMethodWithReturn();
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -161,7 +171,11 @@ public class MyClass_Test : UnitTestBase
             });
 
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithReturn(); }
+        try
+        {
+            instance.MyMethodWithReturn();
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
 
         Assert.IsTrue(callbackCalled);
@@ -176,7 +190,11 @@ public class MyClass_Test : UnitTestBase
             .Throws(() => new ArgumentException("Test"));
 
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithReturn(); }
+        try
+        {
+            instance.MyMethodWithReturn(); 
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -236,7 +254,8 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethod())
             .Throws(new ArgumentException("Test"));
         MyClass instance = new MyClass();
-        try { 
+        try
+        {
             instance.MyMethod();
             Assert.Fail("Exception not thrown");
         }

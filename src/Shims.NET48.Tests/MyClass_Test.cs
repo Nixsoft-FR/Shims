@@ -88,6 +88,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithReturn();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -107,6 +108,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithReturn();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -129,7 +131,11 @@ namespace Shims.NET48.Tests
                 });
 
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithReturn(); }
+            try
+            {
+                instance.MyMethodWithReturn();
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -142,7 +148,11 @@ namespace Shims.NET48.Tests
             shim.Setup(x => x.MyMethodWithReturn())
                 .Throws(exceptionFunction);
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithReturn(); }
+            try
+            {
+                instance.MyMethodWithReturn();
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -161,7 +171,11 @@ namespace Shims.NET48.Tests
                 });
 
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithReturn(); }
+            try
+            {
+                instance.MyMethodWithReturn();
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
 
             Assert.IsTrue(callbackCalled);
@@ -176,7 +190,11 @@ namespace Shims.NET48.Tests
                 .Throws(() => new ArgumentException("Test"));
 
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithReturn(); }
+            try
+            {
+                instance.MyMethodWithReturn(); 
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
