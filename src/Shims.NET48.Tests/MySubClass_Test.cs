@@ -122,7 +122,7 @@ namespace Shims.NET48.Tests
             bool callbackCalled = false;
 
             Shim<MyClass> myClass = new Shim<MyClass>();
-                        Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); }); ;
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             myClass.Setup(x => x.MyMethodWithReturn())
                    .Throws(exceptionFunction)
                    .Callback(() =>
@@ -146,7 +146,7 @@ namespace Shims.NET48.Tests
         public void MySubClass_MyMethodWithReturn_KO_ThowsWithDelegate_WithoutCallback()
         {
             Shim<MyClass> myClass = new Shim<MyClass>();
-                        Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); }); ;
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             myClass.Setup(x => x.MyMethodWithReturn())
                    .Throws(exceptionFunction);
 
@@ -266,6 +266,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethod();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -290,6 +291,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethod();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -302,7 +304,7 @@ namespace Shims.NET48.Tests
         public void MySubClass_MyMethod_KO_ThowsWithDelegate_WithoutCallback()
         {
             Shim<MyClass> myClass = new Shim<MyClass>();
-                        Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); }); ;
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             myClass.Setup(mock => mock.MyMethod())
                    .Throws(exceptionFunction);
 
@@ -310,6 +312,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethod();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -323,7 +326,7 @@ namespace Shims.NET48.Tests
             bool callbackCalled = false;
 
             Shim<MyClass> myClass = new Shim<MyClass>();
-                        Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); }); ;
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             myClass.Setup(mock => mock.MyMethod())
                    .Throws(exceptionFunction)
                    .Callback(() =>
@@ -335,6 +338,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethod();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -354,6 +358,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethod();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -378,6 +383,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethod();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -449,6 +455,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameter("Test");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -474,6 +481,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameter("Test");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -486,7 +494,7 @@ namespace Shims.NET48.Tests
         public void MySubClass_MyMethodWithParameter_KO_ThowsWithDelegate_WithoutCallback()
         {
             Shim<MyClass> myClass = new Shim<MyClass>();
-                        Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); }); ;
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             myClass.Setup(mock => mock.MyMethodWithParameter("Test"))
                    .Throws(exceptionFunction);
 
@@ -494,6 +502,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameter("Test");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -507,7 +516,7 @@ namespace Shims.NET48.Tests
             bool callbackCalled = false;
 
             Shim<MyClass> myClass = new Shim<MyClass>();
-                        Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); }); ;
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             myClass.Setup(mock => mock.MyMethodWithParameter("Test"))
                    .Throws(exceptionFunction)
                    .Callback((string s) =>
@@ -520,6 +529,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameter("Test");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -539,6 +549,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameter("Test");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -564,6 +575,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameter("Test");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -639,6 +651,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -665,6 +678,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -677,7 +691,7 @@ namespace Shims.NET48.Tests
         public void MySubClass_MyMethodWithTwoParameters_KO_ThowsWithDelegate_WithoutCallback()
         {
             Shim<MyClass> myClass = new Shim<MyClass>();
-                        Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); }); ;
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             myClass.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2"))
                    .Throws(exceptionFunction);
 
@@ -685,6 +699,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -698,7 +713,7 @@ namespace Shims.NET48.Tests
             bool callbackCalled = false;
 
             Shim<MyClass> myClass = new Shim<MyClass>();
-                        Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); }); ;
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             myClass.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2"))
                    .Throws(exceptionFunction)
                    .Callback((string s1, string s2) =>
@@ -712,6 +727,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -731,6 +747,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -757,6 +774,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -832,6 +850,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -859,6 +878,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -871,7 +891,7 @@ namespace Shims.NET48.Tests
         public void MySubClass_MyMethodWithThreeParameters_KO_ThowsWithDelegate_WithoutCallback()
         {
             Shim<MyClass> myClass = new Shim<MyClass>();
-                        Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); }); ;
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             myClass.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3"))
                    .Throws(exceptionFunction);
 
@@ -879,6 +899,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -892,7 +913,7 @@ namespace Shims.NET48.Tests
             bool callbackCalled = false;
 
             Shim<MyClass> myClass = new Shim<MyClass>();
-                        Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); }); ;
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             myClass.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3"))
                    .Throws(exceptionFunction)
                    .Callback((string s1, string s2, string s3) =>
@@ -907,6 +928,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -926,6 +948,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -953,6 +976,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1030,6 +1054,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1058,6 +1083,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1070,7 +1096,7 @@ namespace Shims.NET48.Tests
         public void MySubClass_MyMethodWithFourParameters_KO_ThowsWithDelegate_WithoutCallback()
         {
             Shim<MyClass> myClass = new Shim<MyClass>();
-                        Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); }); ;
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             myClass.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"))
                    .Throws(exceptionFunction);
 
@@ -1078,6 +1104,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1091,7 +1118,7 @@ namespace Shims.NET48.Tests
             bool callbackCalled = false;
 
             Shim<MyClass> myClass = new Shim<MyClass>();
-                        Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); }); ;
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             myClass.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"))
                    .Throws(exceptionFunction)
                    .Callback((string s1, string s2, string s3, string s4) =>
@@ -1107,6 +1134,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1126,6 +1154,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1154,6 +1183,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1233,6 +1263,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1262,6 +1293,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1274,7 +1306,7 @@ namespace Shims.NET48.Tests
         public void MySubClass_MyMethodWithFiveParameters_KO_ThowsWithDelegate_WithoutCallback()
         {
             Shim<MyClass> myClass = new Shim<MyClass>();
-                        Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); }); ;
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             myClass.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"))
                    .Throws(exceptionFunction);
 
@@ -1282,6 +1314,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1295,7 +1328,7 @@ namespace Shims.NET48.Tests
             bool callbackCalled = false;
 
             Shim<MyClass> myClass = new Shim<MyClass>();
-                        Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); }); ;
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             myClass.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"))
                    .Throws(exceptionFunction)
                    .Callback((string s1, string s2, string s3, string s4, string s5) =>
@@ -1312,6 +1345,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1331,6 +1365,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1360,6 +1395,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1441,6 +1477,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1471,6 +1508,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1483,7 +1521,7 @@ namespace Shims.NET48.Tests
         public void MySubClass_MyMethodWithSixParameters_KO_ThowsWithDelegate_WithoutCallback()
         {
             Shim<MyClass> myClass = new Shim<MyClass>();
-                        Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); }); ;
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             myClass.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"))
                    .Throws(exceptionFunction);
 
@@ -1491,6 +1529,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1504,7 +1543,7 @@ namespace Shims.NET48.Tests
             bool callbackCalled = false;
 
             Shim<MyClass> myClass = new Shim<MyClass>();
-                        Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); }); ;
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             myClass.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"))
                    .Throws(exceptionFunction)
                    .Callback((string s1, string s2, string s3, string s4, string s5, string s6) =>
@@ -1522,6 +1561,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1541,6 +1581,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1571,6 +1612,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -1696,7 +1738,6 @@ namespace Shims.NET48.Tests
         }
 
         #endregion
-
     }
 
 }
