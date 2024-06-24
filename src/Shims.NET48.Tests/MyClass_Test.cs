@@ -120,7 +120,7 @@ namespace Shims.NET48.Tests
             bool callbackCalled = false;
 
             Shim<MyClass> shim = new Shim<MyClass>();
-            Func<ArgumentException> exceptionFunction = () => new ArgumentException("Test");
+            Delegate exceptionFunction = new Func<Exception>(delegate () { return new ArgumentException("Test"); });
             shim.Setup(x => x.MyMethodWithReturn())
                 .Throws(exceptionFunction)
                 .Callback(() =>
@@ -145,6 +145,7 @@ namespace Shims.NET48.Tests
             try { instance.MyMethodWithReturn(); }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
+
 
         [TestMethod]
         public void MyClass_MyMethodWithReturn_KO_ThowsWithAction_WithCallback()
@@ -235,7 +236,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethod())
                 .Throws(new ArgumentException("Test"));
             MyClass instance = new MyClass();
-            try { instance.MyMethod(); }
+            try
+            {
+                instance.MyMethod();
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -252,7 +257,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethod(); }
+            try
+            {
+                instance.MyMethod();
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -265,7 +274,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethod())
                 .Throws(exceptionFunction);
             MyClass instance = new MyClass();
-            try { instance.MyMethod(); }
+            try
+            {
+                instance.MyMethod();
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -283,7 +296,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethod(); }
+            try
+            {
+                instance.MyMethod();
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -296,7 +313,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethod())
                 .Throws(() => new ArgumentException("Test"));
             MyClass instance = new MyClass();
-            try { instance.MyMethod(); }
+            try
+            {
+                instance.MyMethod();
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -314,7 +335,11 @@ namespace Shims.NET48.Tests
                 });
             MyClass instance = new MyClass();
 
-            try { instance.MyMethod(); }
+            try
+            {
+                instance.MyMethod();
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
 
@@ -378,7 +403,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameter("Test"))
                 .Throws(new ArgumentException("Test"));
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameter("Test"); }
+            try
+            {
+                instance.MyMethodWithParameter("Test");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
 
         }
@@ -397,7 +426,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameter("Test"); }
+            try
+            {
+                instance.MyMethodWithParameter("Test");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -410,7 +443,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameter("Test"))
                 .Throws(exceptionFunction);
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameter("Test"); }
+            try
+            {
+                instance.MyMethodWithParameter("Test");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -429,7 +466,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameter("Test"); }
+            try
+            {
+                instance.MyMethodWithParameter("Test");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -441,7 +482,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameter("Test"))
                 .Throws(() => new ArgumentException("Test"));
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameter("Test"); }
+            try
+            {
+                instance.MyMethodWithParameter("Test");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -459,7 +504,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameter("Test"); }
+            try
+            {
+                instance.MyMethodWithParameter("Test");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -526,7 +575,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2"))
                 .Throws(new ArgumentException("Test"));
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
         [TestMethod]
@@ -544,7 +597,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -558,7 +615,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2"))
                 .Throws(exceptionFunction);
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
         [TestMethod]
@@ -577,7 +638,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -590,7 +655,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2"))
                 .Throws(() => new ArgumentException("Test"));
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -609,10 +678,15 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
+
 
         #endregion
 
@@ -676,7 +750,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3"))
                 .Throws(new ArgumentException("Test"));
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -696,7 +774,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -709,7 +791,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3"))
                     .Throws(exceptionFunction);
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -730,7 +816,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -742,7 +832,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3"))
                 .Throws(() => new ArgumentException("Test"));
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -762,7 +856,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -831,7 +929,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"))
                 .Throws(new ArgumentException("Test"));
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -852,7 +954,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -865,7 +971,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"))
                 .Throws(exceptionFunction);
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -887,7 +997,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -899,7 +1013,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"))
                 .Throws(() => new ArgumentException("Test"));
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -920,7 +1038,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -991,7 +1113,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"))
                 .Throws(new ArgumentException("Test"));
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -1013,7 +1139,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -1026,7 +1156,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"))
                 .Throws(exceptionFunction);
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -1049,7 +1183,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -1061,7 +1199,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"))
                 .Throws(() => new ArgumentException("Test"));
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -1083,7 +1225,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -1156,7 +1302,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"))
                 .Throws(new ArgumentException("Test"));
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -1179,7 +1329,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -1192,7 +1346,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"))
                 .Throws(exceptionFunction);
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -1216,7 +1374,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -1228,7 +1390,11 @@ namespace Shims.NET48.Tests
             shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"))
                 .Throws(() => new ArgumentException("Test"));
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         }
 
@@ -1251,7 +1417,11 @@ namespace Shims.NET48.Tests
                     callbackCalled = true;
                 });
             MyClass instance = new MyClass();
-            try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"); }
+            try
+            {
+                instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+                Assert.Fail("Exception not thrown");
+            }
             catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
             Assert.IsTrue(callbackCalled);
         }
@@ -1374,7 +1544,5 @@ namespace Shims.NET48.Tests
 
 
         #endregion
-
-
     }
 }

@@ -264,6 +264,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethod();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -288,6 +289,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethod();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -308,6 +310,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethod();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -333,6 +336,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethod();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -352,6 +356,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethod();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -376,6 +381,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethod();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -447,6 +453,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -472,6 +479,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -492,6 +500,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -518,6 +527,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -537,6 +547,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -637,6 +648,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -663,6 +675,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -683,6 +696,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -710,6 +724,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -729,6 +744,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -755,6 +771,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -830,6 +847,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -857,6 +875,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -877,6 +896,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -905,6 +925,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -924,6 +945,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -951,6 +973,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1028,6 +1051,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1056,6 +1080,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1076,6 +1101,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1105,6 +1131,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1124,6 +1151,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1152,6 +1180,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1231,6 +1260,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1260,6 +1290,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1280,6 +1311,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1310,6 +1342,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1329,6 +1362,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1358,6 +1392,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1439,6 +1474,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1469,6 +1505,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1489,6 +1526,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1520,6 +1558,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1539,6 +1578,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1569,6 +1609,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1576,6 +1617,8 @@ public class MyChildClass_Test : UnitTestBase
         }
         Assert.IsTrue(callbackCalled);
     }
+
+    #endregion
 
     #endregion
 
@@ -1690,9 +1733,6 @@ public class MyChildClass_Test : UnitTestBase
         MyChildClass instance = new MyChildClass();
         Assert.AreEqual(42, instance.MyPropertyShort);
     }
-
-    #endregion
-
 
     #endregion
 }

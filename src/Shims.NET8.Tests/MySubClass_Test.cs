@@ -263,6 +263,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethod();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -287,6 +288,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethod();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -307,6 +309,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethod();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -332,6 +335,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethod();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -351,6 +355,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethod();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -375,6 +380,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethod();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -446,6 +452,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -471,6 +478,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -491,6 +499,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -517,6 +526,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -536,6 +546,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -561,6 +572,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -636,6 +648,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -662,6 +675,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -682,6 +696,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -709,6 +724,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -728,6 +744,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -754,6 +771,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -829,6 +847,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -856,6 +875,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -876,6 +896,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -904,6 +925,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -923,6 +945,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -950,6 +973,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1027,6 +1051,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1055,6 +1080,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1075,6 +1101,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1104,6 +1131,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1123,6 +1151,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1151,6 +1180,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1230,6 +1260,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1259,6 +1290,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1279,6 +1311,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1309,6 +1342,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1328,6 +1362,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1357,6 +1392,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1438,6 +1474,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1468,6 +1505,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1488,6 +1526,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1519,6 +1558,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1538,6 +1578,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -1568,6 +1609,7 @@ public class MySubClass_Test : UnitTestBase
         try
         {
             instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {

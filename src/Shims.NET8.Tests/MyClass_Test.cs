@@ -236,7 +236,10 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethod())
             .Throws(new ArgumentException("Test"));
         MyClass instance = new MyClass();
-        try { instance.MyMethod(); }
+        try { 
+            instance.MyMethod();
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -253,7 +256,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethod(); }
+        try
+        {
+            instance.MyMethod();
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -266,7 +273,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethod())
             .Throws(exceptionFunction);
         MyClass instance = new MyClass();
-        try { instance.MyMethod(); }
+        try
+        {
+            instance.MyMethod();
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -284,7 +295,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethod(); }
+        try
+        {
+            instance.MyMethod();
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -297,7 +312,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethod())
             .Throws(() => new ArgumentException("Test"));
         MyClass instance = new MyClass();
-        try { instance.MyMethod(); }
+        try
+        {
+            instance.MyMethod();
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -315,7 +334,11 @@ public class MyClass_Test : UnitTestBase
             });
         MyClass instance = new MyClass();
 
-        try { instance.MyMethod(); }
+        try
+        {
+            instance.MyMethod();
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
 
@@ -341,16 +364,6 @@ public class MyClass_Test : UnitTestBase
         MyClass instance = new MyClass();
         instance.MyMethodWithParameter("Test");
         Assert.IsTrue(callbackCalled);
-    }
-
-    [TestMethod]
-    public void MyClass_MyMethodWithParameter_OK_WithoutCallback()
-    {
-        Shim<MyClass> shim = new Shim<MyClass>();
-        shim.Setup(mock => mock.MyMethodWithParameter(It.Any<string>()));
-
-        MyClass instance = new MyClass();
-        instance.MyMethodWithParameter("Test");
     }
 
     [TestMethod]
@@ -389,7 +402,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameter("Test"))
             .Throws(new ArgumentException("Test"));
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameter("Test"); }
+        try
+        {
+            instance.MyMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
 
     }
@@ -408,7 +425,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameter("Test"); }
+        try
+        {
+            instance.MyMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -421,7 +442,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameter("Test"))
             .Throws(exceptionFunction);
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameter("Test"); }
+        try
+        {
+            instance.MyMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -440,7 +465,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameter("Test"); }
+        try
+        {
+            instance.MyMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -452,7 +481,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameter("Test"))
             .Throws(() => new ArgumentException("Test"));
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameter("Test"); }
+        try
+        {
+            instance.MyMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -470,7 +503,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameter("Test"); }
+        try
+        {
+            instance.MyMethodWithParameter("Test");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -537,7 +574,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2"))
             .Throws(new ArgumentException("Test"));
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
     [TestMethod]
@@ -555,7 +596,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -569,7 +614,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2"))
             .Throws(exceptionFunction);
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
     [TestMethod]
@@ -588,7 +637,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -601,7 +654,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2"))
             .Throws(() => new ArgumentException("Test"));
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -620,7 +677,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -688,7 +749,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3"))
             .Throws(new ArgumentException("Test"));
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -708,7 +773,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -721,7 +790,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3"))
                 .Throws(exceptionFunction);
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -742,7 +815,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -754,7 +831,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3"))
             .Throws(() => new ArgumentException("Test"));
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -774,7 +855,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -843,7 +928,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"))
             .Throws(new ArgumentException("Test"));
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -864,7 +953,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -877,7 +970,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"))
             .Throws(exceptionFunction);
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -899,7 +996,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -911,7 +1012,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"))
             .Throws(() => new ArgumentException("Test"));
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -932,7 +1037,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -1003,7 +1112,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"))
             .Throws(new ArgumentException("Test"));
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -1025,7 +1138,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -1038,7 +1155,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"))
             .Throws(exceptionFunction);
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -1061,7 +1182,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -1073,7 +1198,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"))
             .Throws(() => new ArgumentException("Test"));
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -1095,7 +1224,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -1168,7 +1301,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"))
             .Throws(new ArgumentException("Test"));
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -1191,7 +1328,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -1204,7 +1345,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"))
             .Throws(exceptionFunction);
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -1228,7 +1373,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
@@ -1240,7 +1389,11 @@ public class MyClass_Test : UnitTestBase
         shim.Setup(mock => mock.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"))
             .Throws(() => new ArgumentException("Test"));
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
     }
 
@@ -1263,7 +1416,11 @@ public class MyClass_Test : UnitTestBase
                 callbackCalled = true;
             });
         MyClass instance = new MyClass();
-        try { instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6"); }
+        try
+        {
+            instance.MyMethodWithParameters("Test1", "Test2", "Test3", "Test4", "Test5", "Test6");
+            Assert.Fail("Exception not thrown");
+        }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
         Assert.IsTrue(callbackCalled);
     }
