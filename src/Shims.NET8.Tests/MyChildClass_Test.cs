@@ -88,6 +88,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithReturn();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -107,6 +108,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithReturn();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -132,6 +134,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithReturn();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -152,6 +155,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithReturn();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -176,6 +180,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithReturn();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {
@@ -196,6 +201,7 @@ public class MyChildClass_Test : UnitTestBase
         try
         {
             instance.MyChildMethodWithReturn();
+            Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex)
         {

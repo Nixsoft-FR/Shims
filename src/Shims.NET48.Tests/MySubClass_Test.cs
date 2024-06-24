@@ -90,6 +90,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithReturn();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -109,6 +110,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithReturn();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -134,6 +136,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithReturn();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -154,6 +157,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithReturn();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -178,6 +182,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithReturn();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
@@ -198,6 +203,7 @@ namespace Shims.NET48.Tests
             try
             {
                 instance.MyMethodWithReturn();
+                Assert.Fail("Exception not thrown");
             }
             catch (ArgumentException ex)
             {
