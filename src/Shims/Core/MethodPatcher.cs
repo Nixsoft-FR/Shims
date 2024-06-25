@@ -9,7 +9,7 @@ namespace Shims.Core
 
         public static void PatchMethod(ISetup setup, MethodBase method)
         {
-            HarmonyMethod prefix = null;
+            HarmonyMethod prefix = new HarmonyMethod(typeof(MethodPatcher), nameof(PrefixBypass)); ;
             HarmonyMethod postfix = null;
 
             if (setup is ISetupNonVoid)
@@ -35,6 +35,8 @@ namespace Shims.Core
 
         #region Callback Harmony
 
+        public static bool PrefixBypass() => false;
+
         public static void ReturnResultPostfix(MethodBase __originalMethod, ref object __result)
         {
             if (ShimContextManager.CurrentContext.Instances.TryGetValue(__originalMethod, out var instance))
@@ -53,7 +55,7 @@ namespace Shims.Core
             }
         }
 
-        public static void ThrowExceptionPrefix(MethodBase __originalMethod, object __instance, object[] __args)
+        public static bool ThrowExceptionPrefix(MethodBase __originalMethod, object __instance, object[] __args)
         {
             if (ShimContextManager.CurrentContext.Instances.TryGetValue(__originalMethod, out var instance))
             {
@@ -61,15 +63,19 @@ namespace Shims.Core
                 methodInstance.MethodCallback?.DynamicInvoke(__args);
                 throw methodInstance.ThrowedException;
             }
+
+            return false;
         }
 
-        public static void InvokeMethodCallbackPrefix(MethodBase __originalMethod, object __instance, object[] __args)
+        public static bool InvokeMethodCallbackPrefix(MethodBase __originalMethod, object __instance, object[] __args)
         {
             if (ShimContextManager.CurrentContext.Instances.TryGetValue(__originalMethod, out var instance))
             {
                 var methodInstance = (ISetupMethod)instance;
                 methodInstance.MethodCallback?.DynamicInvoke(__args);
             }
+
+            return false;
         }
 
         #endregion
