@@ -1741,6 +1741,149 @@ namespace Shims.NET48.Tests
             Assert.AreEqual(42, instance.MyPropertyShort);
         }
 
+        [TestMethod]
+        public void MyChildClass_MySpecialPropertyString_Get()
+        {
+            Shim<MyClass> shim = new Shim<MyClass>();
+            shim.SetupGet(mock => mock.MySpecialPropertyString).Returns("Test");
+            MyChildClass instance = new MyChildClass();
+            Assert.AreEqual("Test", instance.MySpecialPropertyString);
+        }
+
+        #endregion
+
+        #region MyProperty Set
+
+        [TestMethod]
+        public void MyChildClass_MyPropertyString_Set()
+        {
+            string value = "Test";
+            Shim<MyClass> shim = new Shim<MyClass>();
+            shim.SetupSet(mock => mock.MyPropertyString).Callback((string v) => Assert.AreEqual(value, v));
+            MyChildClass instance = new MyChildClass();
+            instance.MyPropertyString = value;
+        }
+
+        [TestMethod]
+        public void MyChildClass_MyPropertyInt_Set()
+        {
+            int value = 42;
+            Shim<MyClass> shim = new Shim<MyClass>();
+            shim.SetupSet(mock => mock.MyPropertyInt).Callback((int v) => Assert.AreEqual(value, v));
+            MyChildClass instance = new MyChildClass();
+            instance.MyPropertyInt = value;
+        }
+
+        [TestMethod]
+        public void MyChildClass_MyPropertyBool_Set()
+        {
+            bool value = true;
+            Shim<MyClass> shim = new Shim<MyClass>();
+            shim.SetupSet(mock => mock.MyPropertyBool).Callback((bool v) => Assert.IsTrue(v));
+            MyChildClass instance = new MyChildClass();
+            instance.MyPropertyBool = value;
+        }
+
+        [TestMethod]
+        public void MyChildClass_MyPropertyDouble_Set()
+        {
+            double value = 42.42;
+            Shim<MyClass> shim = new Shim<MyClass>();
+            shim.SetupSet(mock => mock.MyPropertyDouble).Callback((double v) => Assert.AreEqual(value, v));
+            MyChildClass instance = new MyChildClass();
+            instance.MyPropertyDouble = value;
+        }
+
+        [TestMethod]
+        public void MyChildClass_MyPropertyFloat_Set()
+        {
+            float value = 42.42f;
+            Shim<MyClass> shim = new Shim<MyClass>();
+            shim.SetupSet(mock => mock.MyPropertyFloat).Callback((float v) => Assert.AreEqual(42.42f, v));
+            MyChildClass instance = new MyChildClass();
+            instance.MyPropertyFloat = value;
+        }
+
+        [TestMethod]
+        public void MyChildClass_MyPropertyDecimal_Set()
+        {
+            decimal value = 42.42m;
+            Shim<MyClass> shim = new Shim<MyClass>();
+            shim.SetupSet(mock => mock.MyPropertyDecimal).Callback((decimal v) => Assert.AreEqual(value, v));
+            MyChildClass instance = new MyChildClass();
+            instance.MyPropertyDecimal = value;
+        }
+
+        [TestMethod]
+        public void MyChildClass_MyPropertyDateTime_Set()
+        {
+            DateTime value = DateTime.Now;
+            Shim<MyClass> shim = new Shim<MyClass>();
+            shim.SetupSet(mock => mock.MyPropertyDateTime).Callback((DateTime v) => Assert.AreEqual(value, v));
+            MyChildClass instance = new MyChildClass();
+            instance.MyPropertyDateTime = value;
+        }
+
+        [TestMethod]
+        public void MyChildClass_MyPropertyGuid_Set()
+        {
+            Guid value = Guid.NewGuid();
+            Shim<MyClass> shim = new Shim<MyClass>();
+            shim.SetupSet(mock => mock.MyPropertyGuid).Callback((Guid v) => Assert.AreEqual(value, v));
+            MyChildClass instance = new MyChildClass();
+            instance.MyPropertyGuid = value;
+        }
+
+        [TestMethod]
+        public void MyChildClass_MyPropertyChar_Set()
+        {
+            char value = 'c';
+            Shim<MyClass> shim = new Shim<MyClass>();
+            shim.SetupSet(mock => mock.MyPropertyChar).Callback((char v) => Assert.AreEqual(value, v));
+            MyChildClass instance = new MyChildClass();
+            instance.MyPropertyChar = value;
+        }
+
+        [TestMethod]
+        public void MyChildClass_MyPropertyByte_Set()
+        {
+            byte value = 42;
+            Shim<MyClass> shim = new Shim<MyClass>();
+            shim.SetupSet(mock => mock.MyPropertyByte).Callback((byte v) => Assert.AreEqual(value, v));
+            MyChildClass instance = new MyChildClass();
+            instance.MyPropertyByte = value;
+        }
+
+        [TestMethod]
+        public void MyChildClass_MyPropertyLong_Set()
+        {
+            long value = 42;
+            Shim<MyClass> shim = new Shim<MyClass>();
+            shim.SetupSet(mock => mock.MyPropertyLong).Callback((long v) => Assert.AreEqual(value, v));
+            MyChildClass instance = new MyChildClass();
+            instance.MyPropertyLong = value;
+        }
+
+        [TestMethod]
+        public void MyChildClass_MyPropertyShort_Set()
+        {
+            short value = 42;
+            Shim<MyClass> shim = new Shim<MyClass>();
+            shim.SetupSet(mock => mock.MyPropertyShort).Callback((short v) => Assert.AreEqual(value, v));
+            MyChildClass instance = new MyChildClass();
+            instance.MyPropertyShort = value;
+        }
+
+        [TestMethod]
+        public void MyChildClass_MySpecialPropertyString_Set()
+        {
+            string value = "Test";
+            Shim<MyClass> shim = new Shim<MyClass>();
+            shim.SetupSet(mock => mock.MySpecialPropertyString).Callback((string v) => Assert.AreEqual(value, v));
+            MyChildClass instance = new MyChildClass();
+            instance.MySpecialPropertyString = value;
+        }
+
         #endregion
     }
 }

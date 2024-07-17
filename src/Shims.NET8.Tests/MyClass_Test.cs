@@ -1560,6 +1560,193 @@ public class MyClass_Test : UnitTestBase
         Assert.AreEqual(42, instance.MyPropertyShort);
     }
 
+    [TestMethod]
+    public void MyClass_MySpecialPropertyString_Get()
+    {
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupGet(mock => mock.MySpecialPropertyString).Returns("Test");
+        MyClass instance = new MyClass();
+        Assert.AreEqual("Test", instance.MySpecialPropertyString);
+    }
+
+    #endregion
+
+    #region MyProperty Set
+
+    [TestMethod]
+    public void MyClass_MyPropertyString_Set()
+    {
+        string value = "Test";
+
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyString)
+            .Callback((string s) => { Assert.AreEqual(value, s); });
+
+        MyClass instance = new MyClass();
+        instance.MyPropertyString = value;
+
+    }
+
+    [TestMethod]
+    public void MyClass_MyPropertyInt_Set()
+    {
+        int value = 42;
+
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyInt)
+            .Callback((int i) => { Assert.AreEqual(value, i); });
+
+        MyClass instance = new MyClass();
+        instance.MyPropertyInt = value;
+    }
+
+    [TestMethod]
+    public void MyClass_MyPropertyBool_Set()
+    {
+        bool value = true;
+
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyBool)
+            .Callback((bool b) => { Assert.AreEqual(value, b); });
+
+        MyClass instance = new MyClass();
+        instance.MyPropertyBool = value;
+    }
+
+    [TestMethod]
+    public void MyClass_MyPropertyDouble_Set()
+    {
+        double value = 42.42;
+
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyDouble)
+            .Callback((double d) => { Assert.AreEqual(value, d); });
+
+        MyClass instance = new MyClass();
+        instance.MyPropertyDouble = value;
+
+    }
+
+    [TestMethod]
+    public void MyClass_MyPropertyFloat_Set()
+    {
+        float value = 42.42f;
+
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyFloat)
+            .Callback((float f) => { Assert.AreEqual(value, f); });
+
+        MyClass instance = new MyClass();
+        instance.MyPropertyFloat = value;
+    }
+
+    [TestMethod]
+    public void MyClass_MyPropertyDecimal_Set()
+    {
+        decimal value = 42.42m;
+
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyDecimal)
+            .Callback((decimal d) => { Assert.AreEqual(value, d); });
+
+        MyClass instance = new MyClass();
+        instance.MyPropertyDecimal = value;
+    }
+
+    [TestMethod]
+    public void MyClass_MyPropertyDateTime_Set()
+    {
+        DateTime value = DateTime.Now;
+
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyDateTime)
+            .Callback((DateTime d) => { Assert.AreEqual(value, d); });
+
+        MyClass instance = new MyClass();
+        instance.MyPropertyDateTime = value;
+    }
+
+    [TestMethod]
+    public void MyClass_MyPropertyGuid_Set()
+    {
+        Guid value = Guid.NewGuid();
+
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyGuid)
+            .Callback((Guid g) => { Assert.AreEqual(value, g); });
+
+        MyClass instance = new MyClass();
+        instance.MyPropertyGuid = value;
+    }
+
+    [TestMethod]
+    public void MyClass_MyPropertyChar_Set()
+    {
+        char value = 'c';
+
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyChar)
+            .Callback((char c) => { Assert.AreEqual(value, c); });
+
+        MyClass instance = new MyClass();
+        instance.MyPropertyChar = value;
+
+    }
+
+    [TestMethod]
+    public void MyClass_MyPropertyByte_Set()
+    {
+        byte value = 42;
+
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyByte)
+            .Callback((byte b) => { Assert.AreEqual(value, b); });
+
+        MyClass instance = new MyClass();
+        instance.MyPropertyByte = value;
+
+    }
+
+    [TestMethod]
+    public void MyClass_MyPropertyLong_Set()
+    {
+        long value = 42;
+
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyLong)
+            .Callback((long l) => { Assert.AreEqual(value, l); });
+
+        MyClass instance = new MyClass();
+        instance.MyPropertyLong = value;
+    }
+
+    [TestMethod]
+    public void MyClass_MyPropertyShort_Set()
+    {
+        short value = 42;
+
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyShort)
+            .Callback((short s) => { Assert.AreEqual(value, s); });
+
+        MyClass instance = new MyClass();
+        instance.MyPropertyShort = value;
+
+    }
+
+    [TestMethod]
+    public void MyClass_MySpecialPropertyString_Set()
+    {
+        string value = "Test";
+
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MySpecialPropertyString)
+            .Callback((string s) => { Assert.AreEqual(value, s); });
+
+        MyClass instance = new MyClass();
+        instance.MySpecialPropertyString = value;
+
+    }
 
     #endregion
 }

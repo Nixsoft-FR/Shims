@@ -36,5 +36,11 @@ namespace Shims
         {
             return new PropertyGetterSetup<T, TResult>(expression);
         }
+
+        public ISetupSetter<T, TValue> SetupSet<TValue>(Expression<Func<T, TValue>> expression)
+        {
+            return new PropertySetterSetup<T, TValue>(expression);
+        }
+
     }
 }

@@ -18,61 +18,73 @@ namespace Shims.TestContext
             public string MyPropertyString
             {
                 get { return myClass.MyPropertyString; }
+                set { myClass.MyPropertyString = value; }
             }
 
             public int MyPropertyInt
             {
                 get { return myClass.MyPropertyInt; }
+                set { myClass.MyPropertyInt = value; }
             }
 
             public bool MyPropertyBool
             {
                 get { return myClass.MyPropertyBool; }
+                set { myClass.MyPropertyBool = value; }
             }
 
             public double MyPropertyDouble
             {
                 get { return myClass.MyPropertyDouble; }
+                set { myClass.MyPropertyDouble = value; }
             }
 
             public float MyPropertyFloat
             {
                 get { return myClass.MyPropertyFloat; }
+                set { myClass.MyPropertyFloat = value; }
             }
 
             public decimal MyPropertyDecimal
             {
                 get { return myClass.MyPropertyDecimal; }
+                set { myClass.MyPropertyDecimal = value; }
             }
 
             public DateTime MyPropertyDateTime
             {
                 get { return myClass.MyPropertyDateTime; }
+                set { myClass.MyPropertyDateTime = value; }
             }
 
             public Guid MyPropertyGuid
             {
                 get { return myClass.MyPropertyGuid; }
+                set { myClass.MyPropertyGuid = value; }
             }
 
             public char MyPropertyChar
             {
                 get { return myClass.MyPropertyChar; }
+                set { myClass.MyPropertyChar = value; }
             }
 
             public byte MyPropertyByte
             {
                 get { return myClass.MyPropertyByte; }
+                set { myClass.MyPropertyByte = value; }
             }
 
             public long MyPropertyLong
             {
                 get { return myClass.MyPropertyLong; }
+                set { myClass.MyPropertyLong = value; }
             }
 
             public short MyPropertyShort
             {
                 get { return myClass.MyPropertyShort; }
+                set { myClass.MyPropertyShort = value; }
             }
 
             public void MyMethod()
