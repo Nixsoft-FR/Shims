@@ -1741,5 +1741,150 @@ public class MySubClass_Test : UnitTestBase
         Assert.AreEqual(42, instance.MyPropertyShort);
     }
 
+    [TestMethod]
+    public void MySubClass_MySpecialPropertyString_Get()
+    {
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupGet(mock => mock.MySpecialPropertyString).Returns("Test");
+        MyChildClass instance = new MyChildClass();
+        Assert.AreEqual("Test", instance.MySpecialPropertyString);
+    }
+
+
     #endregion
+
+    #region MyProperty Set
+
+    [TestMethod]
+    public void MySubClass_MyPropertyString_Set()
+    {
+        string value = "Test";
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyString).Callback((string s) => { value = s; });
+        MySubClass instance = new MySubClass();
+        instance.MyPropertyString = value;
+    }
+
+    [TestMethod]
+    public void MySubClass_MyPropertyInt_Set()
+    {
+        int value = 42;
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyInt).Callback((int i) => { value = i; });
+        MySubClass instance = new MySubClass();
+        instance.MyPropertyInt = value;
+    }
+
+    [TestMethod]
+    public void MySubClass_MyPropertyBool_Set()
+    {
+        bool value = true;
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyBool).Callback((bool b) => { value = b; });
+        MySubClass instance = new MySubClass();
+        instance.MyPropertyBool = value;
+    }
+
+    [TestMethod]
+    public void MySubClass_MyPropertyDouble_Set()
+    {
+        double value = 42.42;
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyDouble).Callback((double d) => { value = d; });
+        MySubClass instance = new MySubClass();
+        instance.MyPropertyDouble = value;
+    }
+
+    [TestMethod]
+    public void MySubClass_MyPropertyFloat_Set()
+    {
+        float value = 42.42f;
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyFloat).Callback((float f) => { value = f; });
+        MySubClass instance = new MySubClass();
+        instance.MyPropertyFloat = value;
+    }
+
+    [TestMethod]
+    public void MySubClass_MyPropertyDecimal_Set()
+    {
+        decimal value = 42.42m;
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyDecimal).Callback((decimal d) => { value = d; });
+        MySubClass instance = new MySubClass();
+        instance.MyPropertyDecimal = value;
+    }
+
+    [TestMethod]
+    public void MySubClass_MyPropertyDateTime_Set()
+    {
+        DateTime value = DateTime.Now;
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyDateTime).Callback((DateTime d) => { value = d; });
+        MySubClass instance = new MySubClass();
+        instance.MyPropertyDateTime = value;
+    }
+
+    [TestMethod]
+    public void MySubClass_MyPropertyGuid_Set()
+    {
+        Guid value = Guid.NewGuid();
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyGuid).Callback((Guid g) => { value = g; });
+        MySubClass instance = new MySubClass();
+        instance.MyPropertyGuid = value;
+    }
+
+    [TestMethod]
+    public void MySubClass_MyPropertyChar_Set()
+    {
+        char value = 'c';
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyChar).Callback((char c) => { value = c; });
+        MySubClass instance = new MySubClass();
+        instance.MyPropertyChar = value;
+    }
+
+    [TestMethod]
+    public void MySubClass_MyPropertyByte_Set()
+    {
+        byte value = 42;
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyByte).Callback((byte b) => { value = b; });
+        MySubClass instance = new MySubClass();
+        instance.MyPropertyByte = value;
+    }
+
+    [TestMethod]
+    public void MySubClass_MyPropertyLong_Set()
+    {
+        long value = 42;
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyLong).Callback((long l) => { value = l; });
+        MySubClass instance = new MySubClass();
+        instance.MyPropertyLong = value;
+    }
+
+    [TestMethod]
+    public void MySubClass_MyPropertyShort_Set()
+    {
+        short value = 42;
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MyPropertyShort).Callback((short s) => { value = s; });
+        MySubClass instance = new MySubClass();
+        instance.MyPropertyShort = value;
+    }
+
+    [TestMethod]
+    public void MySubClass_MySpecialPropertyString_Set()
+    {
+        string value = "Test";
+        Shim<MyClass> shim = new Shim<MyClass>();
+        shim.SetupSet(mock => mock.MySpecialPropertyString).Callback((string s) => { value = s; });
+        MyChildClass instance = new MyChildClass();
+        instance.MySpecialPropertyString = value;
+    }
+
+    #endregion
+
 }

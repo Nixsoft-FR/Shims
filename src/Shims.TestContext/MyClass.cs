@@ -28,6 +28,12 @@ namespace Shims.TestContext
 
         public DateTime MyPropertyDateTime { get; set; }
 
+        public string MySpecialPropertyString
+        {
+            get { return ((IMyClass)this).MySpecialPropertyString; }
+            set { ((IMyClass)this).MySpecialPropertyString = value; }
+        }
+
         public void MyMethod()
         {
             Console.WriteLine("Hello World!");

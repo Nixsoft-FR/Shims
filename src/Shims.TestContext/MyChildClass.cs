@@ -9,61 +9,73 @@ namespace Shims.TestContext
         public new string MyPropertyString
         {
             get { return base.MyPropertyString; }
+            set { base.MyPropertyString = value; }
         }
 
         public new int MyPropertyInt
         {
             get { return base.MyPropertyInt; }
+            set { base.MyPropertyInt = value; }
         }
 
         public new bool MyPropertyBool
         {
             get { return base.MyPropertyBool; }
+            set { base.MyPropertyBool = value; }
         }
 
         public new double MyPropertyDouble
         {
             get { return base.MyPropertyDouble; }
+            set { base.MyPropertyDouble = value; }
         }
 
         public new float MyPropertyFloat
         {
             get { return base.MyPropertyFloat; }
+            set { base.MyPropertyFloat = value; }
         }
 
         public new decimal MyPropertyDecimal
         {
             get { return base.MyPropertyDecimal; }
+            set { base.MyPropertyDecimal = value; }
         }
 
         public new DateTime MyPropertyDateTime
         {
             get { return base.MyPropertyDateTime; }
+            set { base.MyPropertyDateTime = value; }
         }
 
         public new Guid MyPropertyGuid
         {
             get { return base.MyPropertyGuid; }
+            set { base.MyPropertyGuid = value; }
         }
 
         public new char MyPropertyChar
         {
             get { return base.MyPropertyChar; }
+            set { base.MyPropertyChar = value; }
         }
 
         public new byte MyPropertyByte
         {
             get { return base.MyPropertyByte; }
+            set { base.MyPropertyByte = value; }
         }
 
         public new long MyPropertyLong
         {
             get { return base.MyPropertyLong; }
+            set { base.MyPropertyLong = value; }
         }
 
         public new short MyPropertyShort
         {
             get { return base.MyPropertyShort; }
+            set { base.MyPropertyShort = value; }
         }
         public void MyChildMethod()
         {

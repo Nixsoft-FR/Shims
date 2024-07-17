@@ -9,10 +9,13 @@ namespace Shims.Interfaces
     {
     }
 
-    public interface ISetupMethod : ISetup, ICallback, IThrows
+    public interface ISetupCallback : ISetup
     {
         Delegate MethodCallback { get; }
-        
+    }
+
+    public interface ISetupMethod : ISetupCallback, ICallback, IThrows
+    {
         Exception ThrowedException { get; }
     }
 
@@ -41,4 +44,11 @@ namespace Shims.Interfaces
         where TMock : class
     {
     }
+
+    public interface ISetupSetter<TMock, TProperty> : ISetupCallback, ICallbackSetter<TMock, TProperty>
+        where TMock : class
+    {
+        Action<TProperty> SetValueAction { get; }
+    }
+
 }
