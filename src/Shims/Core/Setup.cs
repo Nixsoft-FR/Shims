@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Shims.Interfaces;
 using System.Reflection;
-using System.Text;
 
 namespace Shims.Core
 {
-    internal abstract class Setup
+    internal abstract class Setup : ISetup
     {
-        protected MethodBase TargetMethod { get; set; }
+        internal MethodBase TargetMethod { get; set; }
+
+        public void ConfigureInstance(object instance)
+        {
+            ShimContextManager.CurrentContext.Instances.Remove((TargetMethod, null));
+            ShimContextManager.CurrentContext.Instances[(TargetMethod, instance)] = this;
+        }
+
     }
 }

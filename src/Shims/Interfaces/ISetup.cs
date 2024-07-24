@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Shims.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Shims.Interfaces
 {
@@ -34,7 +36,6 @@ namespace Shims.Interfaces
     {
     }
 
-
     public interface ISetupGetter : ISetup
     {
         object ReturnValue { get; }
@@ -45,10 +46,13 @@ namespace Shims.Interfaces
     {
     }
 
-    public interface ISetupSetter<TMock, TProperty> : ISetupCallback, ICallbackSetter<TMock, TProperty>
+    public interface ISetupSetter : ISetupCallback
+    {
+    }
+
+    public interface ISetupSetter<TMock, TProperty> : ISetupSetter, ICallbackSetter<TMock, TProperty>
         where TMock : class
     {
-        Action<TProperty> SetValueAction { get; }
     }
 
 }

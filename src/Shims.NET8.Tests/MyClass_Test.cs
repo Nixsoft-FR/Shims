@@ -1,5 +1,4 @@
 using Shims.TestContext;
-using System.Runtime.CompilerServices;
 
 namespace Shims.NET8.Tests;
 
@@ -192,7 +191,7 @@ public class MyClass_Test : UnitTestBase
         MyClass instance = new MyClass();
         try
         {
-            instance.MyMethodWithReturn(); 
+            instance.MyMethodWithReturn();
             Assert.Fail("Exception not thrown");
         }
         catch (ArgumentException ex) { Assert.AreEqual("Test", ex.Message); }
@@ -1749,4 +1748,135 @@ public class MyClass_Test : UnitTestBase
     }
 
     #endregion
+
+    #region Instance Mode
+
+    [TestMethod]
+    public void MyClass_Properties_Get_WithTwoInstances()
+    {
+        Guid guidInstance1 = Guid.NewGuid();
+        Guid guidInstance2 = Guid.NewGuid();
+
+        Shim<MyClass> shim1 = new Shim<MyClass>();
+        shim1.SetupGet(mock => mock.MyPropertyString).Returns("Instance1_Test");
+        shim1.SetupGet(mock => mock.MyPropertyInt).Returns(1);
+        shim1.SetupGet(mock => mock.MyPropertyGuid).Returns(guidInstance1);
+        shim1.SetupGet(mock => mock.MySpecialPropertyString).Returns("MySpecialPropertyString_Test1");
+        MyClass obj1 = shim1.Object;
+
+        Shim<MyClass> shim2 = new Shim<MyClass>();
+        shim2.SetupGet(mock => mock.MyPropertyString).Returns("Instance2_Test");
+        shim2.SetupGet(mock => mock.MyPropertyInt).Returns(2);
+        shim2.SetupGet(mock => mock.MyPropertyGuid).Returns(guidInstance2);
+        shim2.SetupGet(mock => mock.MySpecialPropertyString).Returns("MySpecialPropertyString_Test2");
+        MyClass obj2 = shim2.Object;
+
+        Assert.AreEqual("Instance1_Test", obj1.MyPropertyString);
+        Assert.AreEqual(1, obj1.MyPropertyInt);
+        Assert.AreEqual(guidInstance1, obj1.MyPropertyGuid);
+        Assert.AreEqual("MySpecialPropertyString_Test1", obj1.MySpecialPropertyString);
+
+        Assert.AreEqual("Instance2_Test", obj2.MyPropertyString);
+        Assert.AreEqual(2, obj2.MyPropertyInt);
+        Assert.AreEqual(guidInstance2, obj2.MyPropertyGuid);
+        Assert.AreEqual("MySpecialPropertyString_Test2", obj2.MySpecialPropertyString);
+    }
+
+    [TestMethod]
+    public void MyClass_Properties_Set_WithTwoInstances()
+    {
+        Guid guidInstance1 = Guid.NewGuid();
+        Guid guidInstance2 = Guid.NewGuid();
+
+        Shim<MyClass> shim1 = new Shim<MyClass>();
+        shim1.SetupSet(mock => mock.MyPropertyString).Callback((string s) => Assert.AreEqual("Instance1_Test", s));
+        shim1.SetupSet(mock => mock.MyPropertyInt).Callback((int i) => Assert.AreEqual(1, i));
+        shim1.SetupSet(mock => mock.MyPropertyGuid).Callback((Guid g) => Assert.AreEqual(guidInstance1, g));
+        MyClass obj1 = shim1.Object;
+
+        Shim<MyClass> shim2 = new Shim<MyClass>();
+        shim2.SetupSet(mock => mock.MyPropertyString).Callback((string s) => Assert.AreEqual("Instance2_Test", s));
+        shim2.SetupSet(mock => mock.MyPropertyInt).Callback((int i) => Assert.AreEqual(2, i));
+        shim2.SetupSet(mock => mock.MyPropertyGuid).Callback((Guid g) => Assert.AreEqual(guidInstance2, g));
+        MyClass obj2 = shim2.Object;
+
+        obj1.MyPropertyString = "Instance1_Test";
+        obj1.MyPropertyInt = 1;
+        obj1.MyPropertyGuid = guidInstance1;
+
+        obj2.MyPropertyString = "Instance2_Test";
+        obj2.MyPropertyInt = 2;
+        obj2.MyPropertyGuid = guidInstance2;
+    }
+
+    [TestMethod]
+    public void MyClass_Methods_WithTwoInstances()
+    {
+        Shim<MyClass> shim1 = new Shim<MyClass>();
+        shim1.Setup(mock => mock.MyMethodWithParameters(It.Any<string>(), It.Any<string>(), It.Any<string>(), It.Any<string>(), It.Any<string>()))
+            .Callback((string s1, string s2, string s3, string s4, string s5) =>
+            {
+                Assert.AreEqual("Instance1_Test1", s1);
+                Assert.AreEqual("Instance1_Test2", s2);
+                Assert.AreEqual("Instance1_Test3", s3);
+                Assert.AreEqual("Instance1_Test4", s4);
+                Assert.AreEqual("Instance1_Test5", s5);
+            });
+        MyClass obj1 = shim1.Object;
+
+        Shim<MyClass> shim2 = new Shim<MyClass>();
+        shim2.Setup(mock => mock.MyMethodWithParameters(It.Any<string>(), It.Any<string>(), It.Any<string>(), It.Any<string>(), It.Any<string>()))
+            .Callback((string s1, string s2, string s3, string s4, string s5) =>
+            {
+                Assert.AreEqual("Instance2_Test1", s1);
+                Assert.AreEqual("Instance2_Test2", s2);
+                Assert.AreEqual("Instance2_Test3", s3);
+                Assert.AreEqual("Instance2_Test4", s4);
+                Assert.AreEqual("Instance2_Test5", s5);
+            });
+        MyClass obj2 = shim2.Object;
+
+        obj1.MyMethodWithParameters("Instance1_Test1", "Instance1_Test2", "Instance1_Test3", "Instance1_Test4", "Instance1_Test5");
+        obj2.MyMethodWithParameters("Instance2_Test1", "Instance2_Test2", "Instance2_Test3", "Instance2_Test4", "Instance2_Test5");
+    }
+
+    [TestMethod]
+    public void MyClass_NonVoidMethods_WithTwoInstances()
+    {
+        Shim<MyClass> shim1 = new Shim<MyClass>();
+        shim1.Setup(mock => mock.MyMethodWithReturnAndParameters(It.Any<string>(), It.Any<string>(), It.Any<string>(), It.Any<string>(), It.Any<string>()))
+             .Returns("Instance1_Test")
+            .Callback((string s1, string s2, string s3, string s4, string s5) =>
+            {
+                Assert.AreEqual("Instance1_Test1", s1);
+                Assert.AreEqual("Instance1_Test2", s2);
+                Assert.AreEqual("Instance1_Test3", s3);
+                Assert.AreEqual("Instance1_Test4", s4);
+                Assert.AreEqual("Instance1_Test5", s5);
+            });
+        MyClass obj1 = shim1.Object;
+
+        Shim<MyClass> shim2 = new Shim<MyClass>();
+        shim2.Setup(mock => mock.MyMethodWithReturnAndParameters(It.Any<string>(), It.Any<string>(), It.Any<string>(), It.Any<string>(), It.Any<string>()))
+             .Returns("Instance2_Test")
+             .Callback((string s1, string s2, string s3, string s4, string s5) =>
+             {
+                 Assert.AreEqual("Instance2_Test1", s1);
+                 Assert.AreEqual("Instance2_Test2", s2);
+                 Assert.AreEqual("Instance2_Test3", s3);
+                 Assert.AreEqual("Instance2_Test4", s4);
+                 Assert.AreEqual("Instance2_Test5", s5);
+             });
+        MyClass obj2 = shim2.Object;
+
+        string result1 = obj1.MyMethodWithReturnAndParameters("Instance1_Test1", "Instance1_Test2", "Instance1_Test3", "Instance1_Test4", "Instance1_Test5");
+        string result2 = obj2.MyMethodWithReturnAndParameters("Instance2_Test1", "Instance2_Test2", "Instance2_Test3", "Instance2_Test4", "Instance2_Test5");
+
+        Assert.AreEqual("Instance1_Test", result1);
+        Assert.AreEqual("Instance2_Test", result2);
+
+    }
+
+    #endregion
+
 }

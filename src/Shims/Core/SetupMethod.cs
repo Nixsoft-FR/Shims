@@ -2,7 +2,6 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection;
 
 namespace Shims.Core
 {
@@ -16,13 +15,8 @@ namespace Shims.Core
             {
                 if (lambdaExpression.Body is MethodCallExpression methodCall)
                 {
-                    if (ShimContextManager.CurrentContext.Instances.ContainsKey(methodCall.Method))
-                    {
-                        throw new InvalidOperationException("La méthode a déjà été shimmée.");
-                    }
-
                     TargetMethod = methodCall.Method;
-                    ShimContextManager.CurrentContext.Instances[TargetMethod] = this;
+                    ShimContextManager.CurrentContext.Instances[(TargetMethod, null)] = this;
                 }
                 else
                 {
@@ -54,7 +48,7 @@ namespace Shims.Core
 
         public IThrowsResult Throws(Delegate exceptionFunction)
         {
-            var parameters = exceptionFunction.Method.GetParameters().Select(x => x.DefaultValue).ToArray();
+            object[] parameters = exceptionFunction.Method.GetParameters().Select(x => x.DefaultValue).ToArray();
             object e = exceptionFunction.DynamicInvoke(parameters.Length > 0 ? parameters : null);
             if (e is Exception exception)
             {
