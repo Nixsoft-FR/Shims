@@ -1,10 +1,7 @@
-﻿using HarmonyLib;
-using Shims.Interfaces;
+﻿using Shims.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
 
 namespace Shims.Core
 {
@@ -12,19 +9,21 @@ namespace Shims.Core
         where TMock : class
     {
         public object ReturnValue { get; private set; } = default;
+        internal Expression<Func<TMock, TResult>> OriginalExpression { get; set; }
 
-        public PropertyGetterSetup(Expression<Func<TMock, TResult>> expression)
+        public PropertyGetterSetup(Expression<Func<TMock, TResult>> expression, object instance = null)
         {
             if (expression.Body is MemberExpression memberExpr && memberExpr.Member is PropertyInfo property)
             {
-                var getMethod = property.GetGetMethod(true);
+                MethodInfo getMethod = property.GetGetMethod(true);
                 if (getMethod == null)
                 {
                     throw new ArgumentException("La propriété spécifiée n'a pas d'accesseur get.", nameof(expression));
                 }
 
+                OriginalExpression = expression;
                 TargetMethod = getMethod;
-                ShimContextManager.CurrentContext.Instances[TargetMethod] = this;
+                ShimContextManager.CurrentContext.Instances[(TargetMethod, instance)] = this;
             }
             else
             {

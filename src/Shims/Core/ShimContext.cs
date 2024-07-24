@@ -1,5 +1,4 @@
 using HarmonyLib;
-using Shims;
 using Shims.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,16 +8,14 @@ namespace Shims.Core
 {
     public class ShimContext : IDisposable
     {
-        private readonly Harmony harmonyInstance;
-
-        internal Dictionary<MethodBase, ISetup> Instances { get; private set; } = new Dictionary<MethodBase, ISetup>();
+        internal Dictionary<(MethodBase method, object instance), ISetup> Instances { get; private set; } = new Dictionary<(MethodBase, object), ISetup>();
 
         public ShimContext(string instanceId)
         {
-            harmonyInstance = new Harmony(instanceId);
+            HarmonyInstance = new Harmony(instanceId);
         }
 
-        public Harmony HarmonyInstance => harmonyInstance;
+        public Harmony HarmonyInstance { get; }
 
         public void Dispose()
         {
@@ -30,11 +27,11 @@ namespace Shims.Core
         {
             if (disposing)
             {
-                harmonyInstance.UnpatchAll(harmonyInstance.Id);
+                HarmonyInstance.UnpatchAll(HarmonyInstance.Id);
             }
         }
 
-        ~ShimContext() 
+        ~ShimContext()
         {
             Dispose(false);
         }
